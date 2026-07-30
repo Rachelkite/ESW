@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Iowan Old Style", "Palatino Linotype", Georgia, ui-serif, serif;
+  --font-body: -apple-system, "Segoe UI", Inter, Roboto, ui-sans-serif, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f7f6f3;
+  color: #0d0d10;
+}
+
+::selection {
+  background-color: #2a3fb8;
+  color: #f7f6f3;
+}
+
+.frame {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 140% at 15% 0%, rgba(42, 63, 184, 0.16), transparent 55%),
+    linear-gradient(150deg, #14151a 0%, #1d1e24 45%, #0d0d10 100%);
+}
+
+.frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    115deg,
+    rgba(255, 255, 255, 0.03) 0px,
+    rgba(255, 255, 255, 0.03) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: overlay;
+  opacity: 0.5;
+}
+
+.frame-light {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(150deg, #ffffff 0%, #efeee8 55%, #e4e2d9 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

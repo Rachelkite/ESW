@@ -1,0 +1,135 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// --- Auth (staff-only CRM access) ---------------------------------------
+
+enum StaffRole {
+  ADMIN
+  CONCIERGE
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  role          StaffRole @default(CONCIERGE)
+  password      String
+  accounts      Account[]
+  sessions      Session[]
+  tasks         Task[]
+  notes         Note[]
+  createdAt     DateTime  @default(now())
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// --- Lead pipeline --------------------------------------------------------
+
+enum LeadStatus {
+  NEW
+  CONTACTED
+  QUALIFIED
+  SCHEDULED
+  CLOSED_WON
+  CLOSED_LOST
+}
+
+enum InquiryType {
+  CLIENT
+  PEPTIDE
+  CORPORATE
+  RETREAT
+  PHYSICIAN
+}
+
+model Lead {
+  id          String      @id @default(cuid())
+  type        InquiryType
+  status      LeadStatus  @default(NEW)
+  name        String
+  email       String
+  phone       String?
+  company     String?
+  message     String?     @db.Text
+  source      String?
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  tasks       Task[]
+  notes       Note[]
+  emailLogs   EmailLogEntry[]
+
+  @@index([type])
+  @@index([status])
+}
+
+model Task {
+  id        String    @id @default(cuid())
+  title     String
+  dueAt     DateTime?
+  done      Boolean   @default(false)
+  leadId    String?
+  lead      Lead?     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  ownerId   String?
+  owner     User?     @relation(fields: [ownerId], references: [id])
+  createdAt DateTime  @default(now())
+
+  @@index([leadId])
+  @@index([done])
+}
+
+model Note {
+  id        String   @id @default(cuid())
+  body      String   @db.Text
+  leadId    String
+  lead      Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  authorId  String?
+  author    User?    @relation(fields: [authorId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@index([leadId])
+}
+
+model EmailLogEntry {
+  id        String   @id @default(cuid())
+  leadId    String
+  lead      Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  subject   String
+  direction String // "outbound" | "inbound"
+  body      String   @db.Text
+  createdAt DateTime @default(now())
+
+  @@index([leadId])
+}
