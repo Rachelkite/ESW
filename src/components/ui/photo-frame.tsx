@@ -1,4 +1,6 @@
+import Image from "next/image";
 import { cx } from "@/lib/utils";
+import { photography } from "@/content/photography";
 
 const TONES = {
   onyx: "from-[#1b1c22] via-[#101115] to-[#0a0a0d]",
@@ -7,9 +9,9 @@ const TONES = {
 } as const;
 
 /**
- * Editorial placeholder for premium photography. Marks exactly what shot
- * belongs here so real photography can be dropped in before launch —
- * intentionally not a stock image.
+ * Renders real photography when the caption has a matching asset in
+ * src/content/photography.ts; otherwise falls back to a labeled editorial
+ * placeholder marking exactly what shot belongs there.
  */
 export function PhotoFrame({
   caption,
@@ -22,6 +24,28 @@ export function PhotoFrame({
   ratio?: string;
   className?: string;
 }) {
+  const src = photography[caption];
+
+  if (src) {
+    return (
+      <div
+        className={cx(
+          "relative overflow-hidden rounded-[2px] bg-ink",
+          ratio,
+          className
+        )}
+      >
+        <Image
+          src={src}
+          alt={caption.replace(/^Editorial — /, "")}
+          fill
+          sizes="(min-width: 1024px) 50vw, 100vw"
+          className="object-cover"
+        />
+      </div>
+    );
+  }
+
   return (
     <div
       className={cx(

@@ -42,6 +42,6 @@ mail is actually sent until `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, and
 - **Logo**: no logo file was supplied to this build, so the header/footer use
   a typographic wordmark. Swap in the brand mark via `src/components/ui/logo.tsx`
   once available.
-- **Peptide Therapy booking**: the peptide consultation CTA links to
-  `https://myspalive.base44.app/pro/rachel-kite`, presented as the site's own
-  scheduling step.
+- **Peptide Therapy booking**: the peptide consultation CTA is a built-in
+  step (`/contact?type=peptide`) that submits directly into the concierge
+  intake and CRM as a `PEPTIDE` lead — no external or affiliate link.

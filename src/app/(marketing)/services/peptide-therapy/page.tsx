@@ -39,7 +39,7 @@ export default function PeptideTherapyPage() {
       title="Peptide therapy, explained plainly."
       description="Peptides are one of the most misunderstood tools in modern wellness. At Élevé, they are offered the way they should be — through physician guidance, with clarity about what they are and aren't."
       heroCaption="Editorial — physician consultation, natural light"
-      cta={{ label: "Schedule Your Peptide Consultation", href: "https://myspalive.base44.app/pro/rachel-kite" }}
+      cta={{ label: "Schedule Your Peptide Consultation", href: "/contact?type=peptide" }}
       ctaTitle="Ready to explore whether peptide therapy is right for you?"
       ctaDescription="A private consultation is the first step. Your physician will determine whether — and how — peptide therapy fits your goals."
     >
@@ -105,10 +105,7 @@ export default function PeptideTherapyPage() {
               />
             </div>
             <div className="mt-10">
-              <Button
-                href="https://myspalive.base44.app/pro/rachel-kite"
-                variant="solid"
-              >
+              <Button href="/contact?type=peptide" variant="solid">
                 Schedule Your Peptide Consultation
               </Button>
             </div>
