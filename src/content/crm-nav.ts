@@ -5,6 +5,8 @@ export const crmNav = [
   { label: "Client Leads", href: "/portal/leads/client" },
   { label: "Peptide Leads", href: "/portal/leads/peptide" },
   { label: "Retreat Leads", href: "/portal/leads/retreat" },
+  { label: "Bookings", href: "/portal/leads/booking" },
+  { label: "Membership Leads", href: "/portal/leads/membership" },
   { label: "Tasks & Follow-Ups", href: "/portal/tasks" },
   { label: "Notes", href: "/portal/notes" },
   { label: "Calendar", href: "/portal/calendar" },

@@ -1,11 +1,21 @@
 import type { Lead } from "@prisma/client";
 import { StatusBadge } from "@/components/crm/status-badge";
+import { serviceLabel } from "@/lib/service-catalog";
 
 function formatDate(date: Date) {
   return new Intl.DateTimeFormat("en-US", {
     month: "short",
     day: "numeric",
     year: "numeric",
+  }).format(date);
+}
+
+function formatDateTime(date: Date) {
+  return new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
   }).format(date);
 }
 
@@ -26,6 +36,7 @@ export function LeadTable({ leads }: { leads: Lead[] }) {
             <th className="px-5 py-3 text-[0.68rem] font-semibold uppercase tracking-widest2 text-ink/45">Name</th>
             <th className="px-5 py-3 text-[0.68rem] font-semibold uppercase tracking-widest2 text-ink/45">Contact</th>
             <th className="px-5 py-3 text-[0.68rem] font-semibold uppercase tracking-widest2 text-ink/45">Company</th>
+            <th className="px-5 py-3 text-[0.68rem] font-semibold uppercase tracking-widest2 text-ink/45">Appointment</th>
             <th className="px-5 py-3 text-[0.68rem] font-semibold uppercase tracking-widest2 text-ink/45">Status</th>
             <th className="px-5 py-3 text-[0.68rem] font-semibold uppercase tracking-widest2 text-ink/45">Received</th>
           </tr>
@@ -39,6 +50,18 @@ export function LeadTable({ leads }: { leads: Lead[] }) {
                 {lead.phone && <div className="text-xs text-ink/40">{lead.phone}</div>}
               </td>
               <td className="px-5 py-4 text-ink/60">{lead.company ?? "—"}</td>
+              <td className="px-5 py-4 text-ink/60">
+                {lead.scheduledAt ? (
+                  <>
+                    <div>{formatDateTime(lead.scheduledAt)}</div>
+                    {lead.service && (
+                      <div className="text-xs text-ink/40">{serviceLabel(lead.service)}</div>
+                    )}
+                  </>
+                ) : (
+                  "—"
+                )}
+              </td>
               <td className="px-5 py-4">
                 <StatusBadge status={lead.status} />
               </td>

@@ -14,12 +14,12 @@ export const metadata: Metadata = {
 
 const beliefs = [
   {
-    title: "Selective, by design",
-    body: "We would rather serve fewer clients exceptionally than many adequately. That shapes every partnership we form.",
+    title: "We come to you",
+    body: "Aesthetics shouldn't require a waiting room. Your provider brings the visit to your home, office, or hotel.",
   },
   {
-    title: "Guidance over self-service",
-    body: "Advanced wellness is not something to navigate alone. A concierge exists to remove that burden entirely.",
+    title: "Selective, by design",
+    body: "We would rather serve fewer clients exceptionally than many adequately. That shapes every partnership we form.",
   },
   {
     title: "Physicians lead, always",
@@ -33,7 +33,7 @@ export default function AboutPage() {
       <Hero
         eyebrow="About Élevé"
         title="A point of view on wellness, not a brochure."
-        description="Élevé Skin & Wellness exists on a simple premise: advanced wellness works best when someone trustworthy is doing the navigating."
+        description="Élevé Skin & Wellness exists on a simple premise: advanced wellness should come to you. We deliver aesthetics at your location, ship peptide protocols directly, and connect clients with membership access to partner longevity practices."
         primaryCta={{ label: "Begin Your Consultation", href: "/contact" }}
         photoCaption="Editorial — luxury interior, architectural"
         size="regular"

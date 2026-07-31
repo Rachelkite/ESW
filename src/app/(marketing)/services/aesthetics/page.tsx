@@ -9,25 +9,26 @@ import { Reveal } from "@/components/ui/reveal";
 export const metadata: Metadata = {
   title: "Aesthetics",
   description:
-    "Botox, fillers, and skin rejuvenation at Élevé — precision and refinement, positioned as confidence and optimization.",
+    "Botox, dermal filler, B-12 shots, and lipotropic shots — delivered by Élevé at your home, office, or hotel.",
 };
 
 const offerings = [
   { title: "Botox & Neuromodulators", body: "Precision treatment for a refreshed, natural expression." },
   { title: "Dermal Fillers", body: "Volume and structure restored with restraint and proportion." },
-  { title: "Skin Rejuvenation", body: "Advanced treatments for texture, tone, and long-term skin health." },
+  { title: "B-12 Shots", body: "Fast, physician-guided support for energy and vitality." },
+  { title: "Lipotropic (Lipo) Shots", body: "Metabolic support as part of a broader wellness protocol." },
 ];
 
 export default function AestheticsPage() {
   return (
     <ServiceShell
       eyebrow="Services · Aesthetics"
-      title="Precision, not vanity."
-      description="Aesthetics at Élevé is treated as an extension of overall wellness — a way to look as well as you feel, guided by physicians who value restraint over excess."
+      title="Precision, delivered to you."
+      description="Aesthetics at Élevé is treated as an extension of overall wellness — a way to look as well as you feel, guided by physicians who value restraint over excess. Your provider comes to you; there's no office to visit."
       heroCaption="Editorial — aesthetics suite, soft daylight"
-      cta={{ label: "Begin Your Consultation", href: "/contact" }}
-      ctaTitle="Refinement, on your terms."
-      ctaDescription="A consultation begins with a conversation about your goals — never a checklist of procedures."
+      cta={{ label: "Book an Appointment", href: "/book" }}
+      ctaTitle="Refinement, on your schedule."
+      ctaDescription="Choose an open time and your provider comes to you — home, office, or hotel."
     >
       <section className="bg-paper py-24 md:py-32">
         <Container className="grid items-center gap-16 lg:grid-cols-2">
@@ -50,8 +51,8 @@ export default function AestheticsPage() {
 
       <section className="bg-ink py-24 md:py-32">
         <Container>
-          <SectionIntro eyebrow="Offerings" title="What we offer." tone="paper" />
-          <div className="mt-14 grid gap-px overflow-hidden rounded-[2px] bg-paper/10 sm:grid-cols-3">
+          <SectionIntro eyebrow="Offerings" title="What we offer, at your location." tone="paper" />
+          <div className="mt-14 grid gap-px overflow-hidden rounded-[2px] bg-paper/10 sm:grid-cols-2 lg:grid-cols-4">
             {offerings.map((o, i) => (
               <Reveal key={o.title} delay={i * 0.08} className="bg-ink p-8">
                 <span className="h-px w-8 bg-royal block" />
@@ -72,8 +73,8 @@ export default function AestheticsPage() {
           <div className="mt-8">
             <PointList
               items={[
-                "A private consultation to discuss your goals and assess your skin.",
-                "A physician-designed plan, with proportion and restraint as guiding principles.",
+                "Book an open time online — no office visit required.",
+                "Your provider arrives at your home, office, or hotel with everything needed.",
                 "Ongoing concierge follow-up to track results over time.",
               ]}
             />

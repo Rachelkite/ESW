@@ -9,6 +9,9 @@ export const primaryNav = [
       { label: "Recovery & Performance", href: "/services/recovery" },
     ],
   },
+  { label: "Shop", href: "/shop" },
+  { label: "Book", href: "/book" },
+  { label: "Membership", href: "/membership" },
   { label: "Executive Wellness", href: "/executive-wellness" },
   { label: "Retreats", href: "/retreats" },
   { label: "Physician Partners", href: "/physician-partners" },
@@ -28,9 +31,11 @@ export const footerNav = [
   {
     heading: "Élevé",
     links: [
+      { label: "Shop Peptides", href: "/shop" },
+      { label: "Book an Appointment", href: "/book" },
+      { label: "Membership", href: "/membership" },
       { label: "Executive Wellness", href: "/executive-wellness" },
       { label: "Retreats", href: "/retreats" },
-      { label: "Physician Partners", href: "/physician-partners" },
       { label: "About", href: "/about" },
     ],
   },

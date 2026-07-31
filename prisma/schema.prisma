@@ -72,6 +72,8 @@ enum InquiryType {
   CORPORATE
   RETREAT
   PHYSICIAN
+  BOOKING
+  MEMBERSHIP
 }
 
 model Lead {
@@ -87,12 +89,32 @@ model Lead {
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
 
+  // Aesthetics booking specifics (type: BOOKING)
+  service     String?
+  address     String?
+  scheduledAt DateTime?
+  durationMin Int?
+
   tasks       Task[]
   notes       Note[]
   emailLogs   EmailLogEntry[]
 
   @@index([type])
   @@index([status])
+  @@index([scheduledAt])
+}
+
+// --- Aesthetics booking availability ---------------------------------------
+
+model AvailabilityWindow {
+  id        String   @id @default(cuid())
+  dayOfWeek Int // 0 (Sunday) - 6 (Saturday)
+  startMin  Int // minutes from midnight, e.g. 540 = 9:00 AM
+  endMin    Int
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+
+  @@index([dayOfWeek])
 }
 
 model Task {

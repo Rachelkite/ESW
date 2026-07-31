@@ -2,8 +2,8 @@ import { Reveal } from "@/components/ui/reveal";
 
 const points = [
   {
-    title: "Curated Access",
-    body: "A limited, considered network of physicians and specialists — not an open marketplace.",
+    title: "We Come to You",
+    body: "Botox, filler, B-12, and lipo shots delivered at your home, office, or hotel — no waiting room.",
   },
   {
     title: "Physician-Guided",
@@ -14,8 +14,8 @@ const points = [
     body: "Privacy is treated as a standard, not an accommodation — especially for executive clients.",
   },
   {
-    title: "Nationally Minded",
-    body: "One point of contact, one standard of care, wherever your wellness journey takes you.",
+    title: "Direct to Your Door",
+    body: "Peptide orders ship straight from the pharmacy, and membership connects you to partner practices directly.",
   },
 ];
 

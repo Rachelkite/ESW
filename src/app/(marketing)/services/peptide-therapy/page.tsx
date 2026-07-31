@@ -39,9 +39,9 @@ export default function PeptideTherapyPage() {
       title="Peptide therapy, explained plainly."
       description="Peptides are one of the most misunderstood tools in modern wellness. At Élevé, they are offered the way they should be — through physician guidance, with clarity about what they are and aren't."
       heroCaption="Editorial — physician consultation, natural light"
-      cta={{ label: "Schedule Your Peptide Consultation", href: "/contact?type=peptide" }}
-      ctaTitle="Ready to explore whether peptide therapy is right for you?"
-      ctaDescription="A private consultation is the first step. Your physician will determine whether — and how — peptide therapy fits your goals."
+      cta={{ label: "Shop Peptides", href: "/shop" }}
+      ctaTitle="Ready to order your protocol?"
+      ctaDescription="Order directly, or talk to a concierge first — either way, a licensed physician directs your protocol before it ships."
     >
       <section className="bg-paper py-24 md:py-32">
         <Container className="grid items-start gap-16 lg:grid-cols-2">
@@ -53,10 +53,10 @@ export default function PeptideTherapyPage() {
               className="mb-8"
             />
             <p className="max-w-prose text-[0.95rem] leading-relaxed text-ink/65">
-              Élevé&rsquo;s role is guidance and physician-directed access — not a
-              retail pharmacy, and not a one-size-fits-all program. Every
-              client is evaluated individually, and every protocol is
-              directed by a licensed physician.
+              Élevé sells peptide protocols directly, with every order
+              reviewed and directed by a licensed physician — never a
+              one-size-fits-all program. Orders ship straight from the
+              pharmacy to you.
             </p>
           </Reveal>
           <Reveal delay={0.1}>
@@ -98,15 +98,18 @@ export default function PeptideTherapyPage() {
             <div className="mt-8">
               <PointList
                 items={[
-                  "A private consultation to review your health history and goals.",
+                  "Choose your protocol and complete secure checkout.",
                   "Physician evaluation to determine candidacy and the right protocol.",
-                  "Ongoing concierge support as your plan is monitored and adjusted.",
+                  "Your order ships directly from the pharmacy to you.",
                 ]}
               />
             </div>
-            <div className="mt-10">
-              <Button href="/contact?type=peptide" variant="solid">
-                Schedule Your Peptide Consultation
+            <div className="mt-10 flex flex-wrap gap-4">
+              <Button href="/shop" variant="solid">
+                Shop Peptides
+              </Button>
+              <Button href="/contact?type=peptide" variant="outline-dark">
+                Talk to a Concierge First
               </Button>
             </div>
           </Reveal>
