@@ -12,22 +12,47 @@ const inputClasses =
 
 type Slot = { startsAt: string; durationMin: number };
 
-function groupSlotsByDay(slots: Slot[]) {
-  const groups = new Map<string, Slot[]>();
+type Day = {
+  key: string;
+  weekday: string;
+  dayNumber: string;
+  month: string;
+  slots: Slot[];
+};
+
+const PERIODS = [
+  { label: "Morning", test: (h: number) => h < 12 },
+  { label: "Afternoon", test: (h: number) => h >= 12 && h < 17 },
+  { label: "Evening", test: (h: number) => h >= 17 },
+] as const;
+
+function groupSlotsByDay(slots: Slot[]): Day[] {
+  const groups = new Map<string, Day>();
   for (const slot of slots) {
-    const day = new Date(slot.startsAt);
-    const key = new Intl.DateTimeFormat("en-US", {
-      weekday: "long",
-      month: "short",
-      day: "numeric",
-    }).format(day);
-    groups.set(key, [...(groups.get(key) ?? []), slot]);
+    const date = new Date(slot.startsAt);
+    const key = date.toDateString();
+    if (!groups.has(key)) {
+      groups.set(key, {
+        key,
+        weekday: new Intl.DateTimeFormat("en-US", { weekday: "short" }).format(date).toUpperCase(),
+        dayNumber: new Intl.DateTimeFormat("en-US", { day: "numeric" }).format(date),
+        month: new Intl.DateTimeFormat("en-US", { month: "short" }).format(date).toUpperCase(),
+        slots: [],
+      });
+    }
+    groups.get(key)!.slots.push(slot);
   }
-  return groups;
+  return Array.from(groups.values());
 }
 
 function formatTime(iso: string) {
   return new Intl.DateTimeFormat("en-US", { hour: "numeric", minute: "2-digit" }).format(
+    new Date(iso)
+  );
+}
+
+function formatDayHeading(iso: string) {
+  return new Intl.DateTimeFormat("en-US", { weekday: "long", month: "long", day: "numeric" }).format(
     new Date(iso)
   );
 }
@@ -38,6 +63,7 @@ export function BookingForm() {
   );
   const [slots, setSlots] = useState<Slot[] | null>(null);
   const [slotsLoading, setSlotsLoading] = useState(false);
+  const [activeDayKey, setActiveDayKey] = useState<string | null>(null);
 
   const {
     register,
@@ -65,6 +91,7 @@ export function BookingForm() {
     let cancelled = false;
     setSlotsLoading(true);
     setSlots(null);
+    setActiveDayKey(null);
     setValue("startsAt", "");
 
     fetch(`/api/availability?service=${encodeURIComponent(service)}`)
@@ -84,7 +111,15 @@ export function BookingForm() {
     };
   }, [service, setValue]);
 
-  const grouped = useMemo(() => groupSlotsByDay(slots ?? []), [slots]);
+  const days = useMemo(() => groupSlotsByDay(slots ?? []), [slots]);
+
+  useEffect(() => {
+    if (days.length > 0 && !days.some((d) => d.key === activeDayKey)) {
+      setActiveDayKey(days[0].key);
+    }
+  }, [days, activeDayKey]);
+
+  const activeDay = days.find((d) => d.key === activeDayKey);
 
   const onSubmit = async (data: BookingInput) => {
     setStatus("submitting");
@@ -119,55 +154,104 @@ export function BookingForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-7" noValidate>
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-8" noValidate>
       <div>
-        <label htmlFor="service" className="mb-2 block text-[0.7rem] uppercase tracking-widest2 text-ink/45">
+        <span className="mb-3 block text-[0.7rem] uppercase tracking-widest2 text-ink/45">
           Service
-        </label>
-        <select id="service" {...register("service")} className={cx(inputClasses, "appearance-none")}>
+        </span>
+        <div className="grid grid-cols-2 gap-2.5">
           {AESTHETIC_SERVICES.map((s) => (
-            <option key={s.value} value={s.value}>
+            <button
+              key={s.value}
+              type="button"
+              onClick={() => setValue("service", s.value, { shouldValidate: true })}
+              className={cx(
+                "rounded-[2px] border px-4 py-3 text-left text-sm transition-colors",
+                service === s.value
+                  ? "border-royal bg-royal-soft text-royal-deep"
+                  : "border-ink/15 text-ink/70 hover:border-royal/50"
+              )}
+            >
               {s.label}
-            </option>
+            </button>
           ))}
-        </select>
+        </div>
       </div>
 
       <div>
         <span className="mb-3 block text-[0.7rem] uppercase tracking-widest2 text-ink/45">
           Appointment Time
         </span>
+
         {slotsLoading && <p className="text-sm text-ink/45">Loading available times…</p>}
-        {!slotsLoading && grouped.size === 0 && (
+        {!slotsLoading && days.length === 0 && (
           <p className="text-sm text-ink/45">
             No open times in the next two weeks — please reach out to your concierge directly.
           </p>
         )}
-        <div className="flex max-h-72 flex-col gap-5 overflow-y-auto pr-1">
-          {Array.from(grouped.entries()).map(([day, daySlots]) => (
-            <div key={day}>
-              <p className="mb-2 text-xs font-medium uppercase tracking-widest2 text-ink/50">{day}</p>
-              <div className="flex flex-wrap gap-2">
-                {daySlots.map((slot) => (
-                  <button
-                    key={slot.startsAt}
-                    type="button"
-                    onClick={() => setValue("startsAt", slot.startsAt, { shouldValidate: true })}
-                    className={cx(
-                      "rounded-[2px] border px-3.5 py-2 text-sm transition-colors",
-                      startsAt === slot.startsAt
-                        ? "border-royal bg-royal text-paper"
-                        : "border-ink/15 text-ink/70 hover:border-royal/60"
-                    )}
-                  >
-                    {formatTime(slot.startsAt)}
-                  </button>
-                ))}
-              </div>
+
+        {days.length > 0 && (
+          <div className="rounded-[2px] border border-ink/10 bg-white">
+            <div className="flex gap-2 overflow-x-auto border-b border-ink/10 p-3">
+              {days.map((day) => (
+                <button
+                  key={day.key}
+                  type="button"
+                  onClick={() => setActiveDayKey(day.key)}
+                  className={cx(
+                    "flex shrink-0 flex-col items-center gap-0.5 rounded-[2px] border px-4 py-2.5 transition-colors",
+                    activeDayKey === day.key
+                      ? "border-royal bg-royal text-paper"
+                      : "border-transparent text-ink/60 hover:border-ink/15"
+                  )}
+                >
+                  <span className="text-[0.62rem] font-semibold uppercase tracking-widest2 opacity-70">
+                    {day.weekday}
+                  </span>
+                  <span className="font-serif text-lg leading-none">{day.dayNumber}</span>
+                  <span className="text-[0.6rem] uppercase tracking-widest2 opacity-70">{day.month}</span>
+                </button>
+              ))}
             </div>
-          ))}
-        </div>
-        {errors.startsAt && <p className="mt-1.5 text-xs text-red-700">{errors.startsAt.message}</p>}
+
+            {activeDay && (
+              <div className="flex flex-col gap-5 p-5">
+                <p className="text-sm text-ink/50">{formatDayHeading(activeDay.slots[0].startsAt)}</p>
+                {PERIODS.map((period) => {
+                  const periodSlots = activeDay.slots.filter((s) =>
+                    period.test(new Date(s.startsAt).getHours())
+                  );
+                  if (periodSlots.length === 0) return null;
+                  return (
+                    <div key={period.label}>
+                      <p className="mb-2.5 text-xs font-medium uppercase tracking-widest2 text-ink/40">
+                        {period.label}
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {periodSlots.map((slot) => (
+                          <button
+                            key={slot.startsAt}
+                            type="button"
+                            onClick={() => setValue("startsAt", slot.startsAt, { shouldValidate: true })}
+                            className={cx(
+                              "rounded-[2px] border px-4 py-2.5 text-sm transition-colors",
+                              startsAt === slot.startsAt
+                                ? "border-royal bg-royal text-paper"
+                                : "border-ink/15 text-ink/70 hover:border-royal/60"
+                            )}
+                          >
+                            {formatTime(slot.startsAt)}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        )}
+        {errors.startsAt && <p className="mt-2 text-xs text-red-700">{errors.startsAt.message}</p>}
       </div>
 
       <div className="grid gap-7 sm:grid-cols-2">
