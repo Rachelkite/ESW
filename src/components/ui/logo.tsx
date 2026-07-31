@@ -10,9 +10,19 @@ export function Logo({ tone = "light", className }: { tone?: "light" | "dark"; c
         tone === "light" ? "text-paper" : "text-ink",
         className
       )}
-      aria-label="Élevé Skin & Wellness — Home"
+      aria-label="Élevé Skin & Wellness (ESW) — Home"
     >
-      <span className="font-serif text-[1.3rem] tracking-[0.02em]">Élevé</span>
+      <span className="flex items-baseline gap-2">
+        <span className="font-serif text-[1.3rem] tracking-[0.02em]">Élevé</span>
+        <span
+          className={cx(
+            "text-[0.62rem] font-semibold tracking-[0.15em]",
+            tone === "light" ? "text-royal/80" : "text-royal"
+          )}
+        >
+          ESW
+        </span>
+      </span>
       <span
         className={cx(
           "mt-0.5 text-[0.58rem] font-medium uppercase tracking-widest2",

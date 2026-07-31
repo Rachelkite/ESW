@@ -4,15 +4,15 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://eleveskinwellness.com"),
   title: {
-    default: "Élevé Skin & Wellness — Your Health. Elevated.",
-    template: "%s — Élevé Skin & Wellness",
+    default: "Élevé Skin & Wellness (ESW) — Your Health. Elevated.",
+    template: "%s — Élevé Skin & Wellness (ESW)",
   },
   description:
-    "A private concierge for advanced wellness — aesthetics, longevity, and executive performance, curated through a select network of physicians and experiences.",
+    "Mobile aesthetics delivered to you — Botox, filler, B-12, and lipo shots — plus physician-directed peptide protocols and membership access to partner longevity practices. Based in Plano, TX.",
   openGraph: {
-    title: "Élevé Skin & Wellness",
+    title: "Élevé Skin & Wellness (ESW)",
     description: "Your Health. Elevated.",
-    siteName: "Élevé Skin & Wellness",
+    siteName: "Élevé Skin & Wellness (ESW)",
     type: "website",
   },
 };

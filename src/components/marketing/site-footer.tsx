@@ -11,8 +11,13 @@ export function SiteFooter() {
           <div>
             <Logo tone="light" />
             <p className="mt-6 max-w-xs text-sm leading-relaxed text-paper/55">
-              A private concierge for advanced wellness — aesthetics, longevity,
-              and executive performance, curated.
+              Mobile aesthetics, peptide protocols, and physician membership
+              access — delivered to you, based in Plano, TX.
+            </p>
+            <p className="mt-4 text-sm text-paper/55">
+              <a href="tel:+14692685250" className="transition-colors hover:text-paper">
+                (469) 268-5250
+              </a>
             </p>
           </div>
           <p className="font-serif text-lg italic text-paper/70">
@@ -45,8 +50,15 @@ export function SiteFooter() {
 
       <div className="border-t border-paper/10">
         <Container className="flex flex-col items-start justify-between gap-4 py-6 text-xs text-paper/35 sm:flex-row sm:items-center">
-          <span>&copy; {new Date().getFullYear()} Élevé Skin &amp; Wellness. All rights reserved.</span>
-          <span>Concierge inquiries handled with discretion.</span>
+          <span>&copy; {new Date().getFullYear()} Élevé Skin &amp; Wellness (ESW). All rights reserved.</span>
+          <div className="flex items-center gap-5">
+            <Link href="/privacy" className="transition-colors hover:text-paper/60">
+              Privacy Policy
+            </Link>
+            <Link href="/terms" className="transition-colors hover:text-paper/60">
+              Terms of Service
+            </Link>
+          </div>
         </Container>
       </div>
     </footer>
