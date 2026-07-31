@@ -15,7 +15,7 @@ export default function HomePage() {
       <Hero
         eyebrow="Élevé Skin & Wellness"
         title="Your Health. Elevated."
-        description="Mobile aesthetics delivered to you — Botox, filler, B-12, and lipo shots. Peptide protocols shipped directly. Membership access to partner longevity practices. All physician-directed, all coordinated by your concierge."
+        description="Advanced aesthetics and longevity, brought to you — never the other way around. Botox, filler, and B-12 in your own home. Physician-directed peptides at your door. Membership into the practices worth knowing. One concierge, orchestrating all of it."
         primaryCta={{ label: "Book an Appointment", href: "/book" }}
         secondaryCta={{ label: "Shop Peptides", href: "/shop" }}
         photoCaption="Editorial — private residence entryway, morning light"
@@ -25,8 +25,8 @@ export default function HomePage() {
         <Container>
           <SectionIntro
             eyebrow="The Élevé Difference"
-            title="Wellness, without the guesswork."
-            description="We're not a med spa you visit — we come to you for aesthetics, ship your peptides directly, and connect you with membership access to partner physician practices."
+            title="No waiting rooms. No referrals into the void."
+            description="Your provider comes to you. Your protocols arrive at your door. Your concierge opens the doors to physicians worth knowing. This is wellness built around your life, not the other way around."
           />
           <div className="mt-14">
             <DifferenceGrid />

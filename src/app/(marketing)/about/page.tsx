@@ -33,7 +33,7 @@ export default function AboutPage() {
       <Hero
         eyebrow="About Élevé"
         title="A point of view on wellness, not a brochure."
-        description="Élevé Skin & Wellness exists on a simple premise: advanced wellness should come to you. We deliver aesthetics at your location, ship peptide protocols directly, and connect clients with membership access to partner longevity practices."
+        description="Élevé exists on a simple premise: the best care meets you where you are. We bring aesthetics to your door, ship physician-directed peptides to it, and open a further door still — to the longevity practices worth knowing."
         primaryCta={{ label: "Begin Your Consultation", href: "/contact" }}
         photoCaption="Editorial — private residence interior, architectural, morning"
         size="regular"
@@ -45,7 +45,7 @@ export default function AboutPage() {
             <SectionIntro
               eyebrow="Philosophy"
               title="Wellness is not a purchase. It's a relationship."
-              description="Most people encounter advanced wellness — peptides, hormone optimization, aesthetics, executive recovery — as a series of disconnected purchases from disconnected providers. Élevé exists to make it one relationship instead: a single concierge, a network of vetted physicians, and a standard that doesn't waver by category."
+              description="Most people encounter advanced wellness as a series of disconnected purchases from disconnected providers — a peptide order here, an aesthetics appointment there, a physician relationship left to chance. Élevé exists to make it one relationship instead: a single concierge, a standard that never wavers, and a team that comes to you."
             />
           </Reveal>
           <Reveal delay={0.1}>

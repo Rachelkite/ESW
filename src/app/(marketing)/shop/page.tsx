@@ -5,6 +5,7 @@ import { SectionIntro } from "@/components/marketing/section-intro";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
 import { PEPTIDE_ORDER_URL } from "@/content/external-links";
+import { products } from "@/content/products";
 
 export const metadata: Metadata = {
   title: "Shop Peptides",
@@ -12,33 +13,14 @@ export const metadata: Metadata = {
     "Order physician-directed peptide protocols from Élevé — secure payment and pharmacy fulfillment, shipped directly to you.",
 };
 
-const categories = [
-  {
-    title: "Longevity",
-    body: "Protocols oriented around cellular health and long-term vitality.",
-  },
-  {
-    title: "Recovery",
-    body: "Supporting the body's repair processes after physical strain or injury.",
-  },
-  {
-    title: "Performance",
-    body: "Supporting energy, focus, and physical output for demanding lives.",
-  },
-  {
-    title: "Weight Management",
-    body: "Physician-guided approaches to sustainable metabolic health.",
-  },
-];
-
 export default function ShopPage() {
   return (
     <>
       <Hero
-        eyebrow="Shop Peptides"
-        title="Order your protocol, shipped directly to you."
-        description="Every peptide protocol at Élevé is physician-directed. Ordering, payment, and pharmacy fulfillment are handled through our secure order system — shipped straight from the pharmacy to your door."
-        primaryCta={{ label: "Begin Your Peptide Order", href: PEPTIDE_ORDER_URL }}
+        eyebrow="The Élevé Peptide Shop"
+        title="Precision protocols. Delivered to your door."
+        description="Every protocol is reviewed by a licensed physician before it ships — ordered in minutes, fulfilled by the pharmacy, delivered to you."
+        primaryCta={{ label: "Begin Your Order", href: PEPTIDE_ORDER_URL }}
         secondaryCta={{ label: "Talk to a Concierge First", href: "/contact?type=peptide" }}
         photoCaption="Editorial — peptide vials, still life"
       />
@@ -46,15 +28,32 @@ export default function ShopPage() {
       <section className="bg-paper py-24 md:py-32">
         <Container>
           <SectionIntro
-            eyebrow="Areas of Use"
-            title="Where peptide therapy is applied."
+            eyebrow="The Catalog"
+            title="Choose your protocol."
+            description="Every order is reviewed by a licensed physician before it ships. Pricing and availability are confirmed at checkout."
           />
           <div className="mt-14 grid gap-px overflow-hidden rounded-[2px] bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">
-            {categories.map((c, i) => (
-              <Reveal key={c.title} delay={i * 0.06} className="bg-white p-8">
-                <span className="h-px w-8 bg-royal block" />
-                <h3 className="mt-5 font-serif text-lg text-ink">{c.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink/55">{c.body}</p>
+            {products.map((product, i) => (
+              <Reveal
+                key={product.name}
+                delay={i * 0.05}
+                className="flex flex-col justify-between bg-white p-7"
+              >
+                <div>
+                  <span className="text-[0.65rem] font-semibold uppercase tracking-widest2 text-royal">
+                    {product.category}
+                  </span>
+                  <h3 className="mt-3 font-serif text-xl text-ink">{product.name}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-ink/55">{product.description}</p>
+                </div>
+                <a
+                  href={PEPTIDE_ORDER_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-royal transition-colors hover:text-royal-deep"
+                >
+                  Order This Protocol <span aria-hidden>&rarr;</span>
+                </a>
               </Reveal>
             ))}
           </div>
@@ -91,7 +90,7 @@ export default function ShopPage() {
           </ol>
           <div className="mt-12">
             <Button href={PEPTIDE_ORDER_URL} variant="solid">
-              Begin Your Peptide Order
+              Begin Your Order
             </Button>
           </div>
         </Container>
