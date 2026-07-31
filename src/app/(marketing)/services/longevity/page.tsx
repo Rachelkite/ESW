@@ -18,7 +18,7 @@ export default function LongevityPage() {
       eyebrow="Services · Hormone & Longevity"
       title="Optimization, built on evidence."
       description="Hormone and longevity protocols at Élevé begin with diagnostics — not assumptions. Every recommendation is grounded in your own biology."
-      heroCaption="Editorial — diagnostics lab, clinical minimal"
+      heroCaption="Editorial — diagnostics kit, still life, clinical minimal"
       cta={{ label: "Begin Your Consultation", href: "/contact" }}
       ctaTitle="Your biology, understood."
       ctaDescription="Comprehensive diagnostics are the foundation of every longevity plan at Élevé."
@@ -34,7 +34,7 @@ export default function LongevityPage() {
           </Reveal>
           <Reveal delay={0.1}>
             <PhotoFrame
-              caption="Editorial — lab diagnostics, architectural"
+              caption="Editorial — diagnostics kit, still life, architectural"
               tone="onyx"
               ratio="aspect-[4/5]"
             />

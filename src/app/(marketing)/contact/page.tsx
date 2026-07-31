@@ -44,7 +44,7 @@ export default async function ContactPage({
           </p>
           <div className="mt-12 hidden lg:block">
             <PhotoFrame
-              caption="Editorial — concierge desk, evening"
+              caption="Editorial — concierge desk, home study, evening"
               tone="royal"
               ratio="aspect-[4/5]"
             />

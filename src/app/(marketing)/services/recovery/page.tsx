@@ -18,7 +18,7 @@ export default function RecoveryPage() {
       eyebrow="Services · Recovery & Performance"
       title="Recovery, treated as strategy."
       description="For clients whose lives demand sustained physical output, recovery isn't optional — it's engineered, monitored, and adjusted like any other performance discipline."
-      heroCaption="Editorial — recovery suite, low light"
+      heroCaption="Editorial — private recovery space, low light"
       cta={{ label: "Begin Your Consultation", href: "/contact" }}
       ctaTitle="Recovery, engineered."
       ctaDescription="Your protocol is designed around how you train, work, and live — not a generic recovery plan."
@@ -27,7 +27,7 @@ export default function RecoveryPage() {
         <Container className="grid items-center gap-16 lg:grid-cols-2">
           <Reveal>
             <PhotoFrame
-              caption="Editorial — recovery treatment, architectural"
+              caption="Editorial — private recovery space, architectural"
               tone="royal"
               ratio="aspect-[4/5]"
             />

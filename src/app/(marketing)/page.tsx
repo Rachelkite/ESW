@@ -18,7 +18,7 @@ export default function HomePage() {
         description="Mobile aesthetics delivered to you — Botox, filler, B-12, and lipo shots. Peptide protocols shipped directly. Membership access to partner longevity practices. All physician-directed, all coordinated by your concierge."
         primaryCta={{ label: "Book an Appointment", href: "/book" }}
         secondaryCta={{ label: "Shop Peptides", href: "/shop" }}
-        photoCaption="Editorial — luxury interior, morning light"
+        photoCaption="Editorial — private residence entryway, morning light"
       />
 
       <section className="bg-paper py-24 md:py-32">

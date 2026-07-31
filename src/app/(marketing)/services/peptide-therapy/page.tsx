@@ -38,7 +38,7 @@ export default function PeptideTherapyPage() {
       eyebrow="Services · Peptide Therapy"
       title="Peptide therapy, explained plainly."
       description="Peptides are one of the most misunderstood tools in modern wellness. At Élevé, they are offered the way they should be — through physician guidance, with clarity about what they are and aren't."
-      heroCaption="Editorial — physician consultation, natural light"
+      heroCaption="Editorial — peptide vial and syringe, still life, natural light"
       cta={{ label: "Shop Peptides", href: "/shop" }}
       ctaTitle="Ready to order your protocol?"
       ctaDescription="Order directly, or talk to a concierge first — either way, a licensed physician directs your protocol before it ships."
@@ -61,7 +61,7 @@ export default function PeptideTherapyPage() {
           </Reveal>
           <Reveal delay={0.1}>
             <PhotoFrame
-              caption="Editorial — peptide diagnostics, clinical minimal"
+              caption="Editorial — peptide vials arranged, clinical minimal still life"
               tone="royal"
               ratio="aspect-[4/5]"
             />
@@ -115,7 +115,7 @@ export default function PeptideTherapyPage() {
           </Reveal>
           <Reveal delay={0.1}>
             <PhotoFrame
-              caption="Editorial — recovery suite, low light"
+              caption="Editorial — private recovery space, low light"
               tone="onyx"
               ratio="aspect-[4/5]"
             />

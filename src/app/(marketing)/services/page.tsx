@@ -18,25 +18,25 @@ const services = [
     title: "Peptide Therapy",
     line: "Physician-directed protocols for longevity, recovery, and performance.",
     href: "/services/peptide-therapy",
-    caption: "Editorial — physician consultation, natural light",
+    caption: "Editorial — peptide vial and syringe, still life, natural light",
   },
   {
     title: "Aesthetics",
     line: "Botox, fillers, and skin rejuvenation as confidence, not vanity.",
     href: "/services/aesthetics",
-    caption: "Editorial — aesthetics suite, soft daylight",
+    caption: "Editorial — Botox treatment at client's home, soft daylight",
   },
   {
     title: "Hormone & Longevity",
     line: "Optimization built around your biology, informed by real diagnostics.",
     href: "/services/longevity",
-    caption: "Editorial — diagnostics lab, clinical minimal",
+    caption: "Editorial — diagnostics kit, still life, clinical minimal",
   },
   {
     title: "Recovery & Performance",
     line: "Structured recovery protocols for sustained physical output.",
     href: "/services/recovery",
-    caption: "Editorial — recovery suite, low light",
+    caption: "Editorial — private recovery space, low light",
   },
 ];
 
@@ -48,7 +48,7 @@ export default function ServicesPage() {
         title="Four disciplines. One concierge standard."
         description="Every service at Élevé is directed by a licensed physician and delivered through a single point of contact — your concierge."
         primaryCta={{ label: "Begin Your Consultation", href: "/contact" }}
-        photoCaption="Editorial — clinical interior, architectural"
+        photoCaption="Editorial — private residence interior, evening"
         size="regular"
       />
 

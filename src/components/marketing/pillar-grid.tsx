@@ -7,19 +7,19 @@ const pillars = [
     title: "Peptide Therapy",
     line: "Advanced protocols for longevity, recovery, and performance.",
     href: "/services/peptide-therapy",
-    caption: "Editorial — physician consultation, natural light",
+    caption: "Editorial — peptide vial and syringe, still life, natural light",
   },
   {
     title: "Aesthetics",
     line: "Botox, fillers, and skin rejuvenation as quiet confidence.",
     href: "/services/aesthetics",
-    caption: "Editorial — aesthetics suite, soft daylight",
+    caption: "Editorial — Botox treatment at client's home, soft daylight",
   },
   {
     title: "Hormone & Longevity",
     line: "Optimization built around your biology, not a template.",
     href: "/services/longevity",
-    caption: "Editorial — lab / diagnostics, clinical minimal",
+    caption: "Editorial — diagnostics kit, still life, clinical minimal",
   },
   {
     title: "Executive Wellness",

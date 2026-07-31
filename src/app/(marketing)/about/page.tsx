@@ -35,7 +35,7 @@ export default function AboutPage() {
         title="A point of view on wellness, not a brochure."
         description="Élevé Skin & Wellness exists on a simple premise: advanced wellness should come to you. We deliver aesthetics at your location, ship peptide protocols directly, and connect clients with membership access to partner longevity practices."
         primaryCta={{ label: "Begin Your Consultation", href: "/contact" }}
-        photoCaption="Editorial — luxury interior, architectural"
+        photoCaption="Editorial — private residence interior, architectural, morning"
         size="regular"
       />
 

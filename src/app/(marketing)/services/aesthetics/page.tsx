@@ -25,7 +25,7 @@ export default function AestheticsPage() {
       eyebrow="Services · Aesthetics"
       title="Precision, delivered to you."
       description="Aesthetics at Élevé is treated as an extension of overall wellness — a way to look as well as you feel, guided by physicians who value restraint over excess. Your provider comes to you; there's no office to visit."
-      heroCaption="Editorial — aesthetics suite, soft daylight"
+      heroCaption="Editorial — Botox treatment at client's home, soft daylight"
       cta={{ label: "Book an Appointment", href: "/book" }}
       ctaTitle="Refinement, on your schedule."
       ctaDescription="Choose an open time and your provider comes to you — home, office, or hotel."
@@ -34,7 +34,7 @@ export default function AestheticsPage() {
         <Container className="grid items-center gap-16 lg:grid-cols-2">
           <Reveal>
             <PhotoFrame
-              caption="Editorial — dermatology consultation"
+              caption="Editorial — filler treatment in progress, client's living room"
               tone="royal"
               ratio="aspect-[4/5]"
             />
